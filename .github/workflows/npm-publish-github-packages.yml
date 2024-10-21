@@ -4,6 +4,9 @@
 name: Node.js Package
 
 on:
+  push: # Trigger on every push
+    branches:
+      - main  # Adjust this to your main branch name (e.g., "main", "master")
   release:
     types: [created]
 
