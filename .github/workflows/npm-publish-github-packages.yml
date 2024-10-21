@@ -1,10 +1,9 @@
 # This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
-# For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
 
 name: Node.js Package
 
 on:
-  push: # Trigger on every push
+  push:
     branches:
       - main  # Adjust this to your main branch name (e.g., "main", "master")
   release:
@@ -22,12 +21,15 @@ jobs:
       - name: Run Mocha Tests
         id: mocha
         run: |
+          npx mocha --reporter spec || true  # Show detailed output first
           npx mocha --reporter json > test-results.json
       - name: Upload Test Results
         uses: actions/upload-artifact@v3
         with:
           name: mocha-test-results
           path: test-results.json
+      - name: Display Test Results
+        run: cat test-results.json || echo "No test results available"
       - name: Score Test Results
         run: |
           # Calculate the score based on the test results
