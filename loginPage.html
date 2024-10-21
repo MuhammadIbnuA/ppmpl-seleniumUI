@@ -1,46 +1,44 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Halaman Login</title> <!-- Changed title to Indonesian -->
+    <title>Login Page</title>
     <style>
         #errorMessage {
             color: red;
-            display: none; /* Tersembunyi secara default */
+            display: none; /* Hidden by default */
         }
     </style>
 </head>
 <body>
     <h2>Login</h2>
     <form id="loginForm" onsubmit="handleLogin(event)">
-        <label for="username">Nama Pengguna:</label> <!-- Changed label to Indonesian -->
+        <label for="username">Username:</label>
         <input type="text" id="username" name="username" required>
         <br><br>
-        <label for="password">Kata Sandi:</label> <!-- Changed label to Indonesian -->
+        <label for="password">Password:</label>
         <input type="password" id="password" name="password" required>
         <br><br>
-        <button type="submit" id="loginButton">Masuk</button> <!-- Changed button text to Indonesian -->
-        <p id="errorMessage">Nama pengguna atau kata sandi tidak valid.</p> <!-- Changed error message to Indonesian -->
+        <button type="submit" id="loginButton">Login</button>
+        <p id="errorMessage">Invalid username or password.</p> <!-- Error message -->
     </form>
 
     <script>
         function handleLogin(event) {
-            event.preventDefault(); // Mencegah pengiriman formulir
+            event.preventDefault(); // Prevent form submission
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
 
-            // Simulasi validasi login
+            // Simulated login validation
             if (username === 'testuser' && password === 'password123') {
-                // Arahkan ke halaman dashboard
-                window.location.href = 'dashboard.html'; // Pastikan file ini ada
+                // Redirect to dashboard page
+                window.location.href = 'dashboard.html'; // Ensure this file exists
             } else {
-                // Tampilkan pesan kesalahan
+                // Show error message
                 document.getElementById('errorMessage').style.display = 'block';
             }
         }
-        // TODO: Implement actual login logic, possibly with AJAX or a server-side call
-        // TODO: Add form validation to check for empty fields before submission
     </script>
 </body>
 </html>
